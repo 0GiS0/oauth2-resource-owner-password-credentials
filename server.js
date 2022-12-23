@@ -9,7 +9,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const log = bunyan.createLogger({ name: 'Resource Pwner Password Credentials Flow' });
+const log = bunyan.createLogger({ name: 'Resource Owner Password Credentials Flow' });
 
 app.use(express.static('public'));
 
