@@ -1,14 +1,15 @@
 //Modules
-const express = require('express'),
-    bunyan = require('bunyan'),
-    bodyParser = require('body-parser'),
-    fetch = require("node-fetch");
+import express from 'express';
+import bunyan from 'bunyan';
+import bodyParser from 'body-parser';
+import fetch from 'node-fetch';
 
 //Load values from .env file
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
-const log = bunyan.createLogger({ name: 'Authorization Code Flow' });
+const log = bunyan.createLogger({ name: 'Resource Pwner Password Credentials Flow' });
 
 app.use(express.static('public'));
 
@@ -28,8 +29,8 @@ app.get('/get/the/token', (req, res) => {
     const Grant_Type = 'password';    
     const Client_Id = process.env.CLIENT_ID;
     const Client_Secret = process.env.CLIENT_SECRET;
-    const UserName = process.env.USER;
-    const Password = process.env.PASSWORD;
+    const UserName = process.env.USER_NAME;
+    const Password = process.env.USER_PASSWORD;
     const Scope = 'https://graph.microsoft.com/User.Read';
 
     let body = `grant_type=${Grant_Type}&client_id=${Client_Id}&client_secret=${Client_Secret}&username=${UserName}&password=${Password}&scope=${encodeURIComponent(Scope)}`;
